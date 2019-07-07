@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a95eb99-3b8e-466a-8749-911c1cf3d50c" name="Default Changelist" comment="" />
+    <list default="true" id="6a95eb99-3b8e-466a-8749-911c1cf3d50c" name="Default Changelist" comment="web网盘主界面">
+      <change beforePath="$PROJECT_DIR$/../NetDisk/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NetDisk/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -48,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/../NetDisk/CSS/home.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="8300">
-              <caret line="415" column="29" selection-start-line="415" selection-start-column="29" selection-end-line="415" selection-end-column="29" />
+              <caret line="419" column="29" selection-start-line="419" selection-start-column="29" selection-end-line="419" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -68,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../NetDisk/JS/uploadfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="24" column="89" selection-start-line="24" selection-start-column="89" selection-end-line="24" selection-end-column="89" />
+            <state relative-caret-position="460">
+              <caret line="23" column="89" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -90,6 +92,9 @@
       <find>folder</find>
       <find>source</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../NetDisk" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -140,6 +145,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -178,17 +184,26 @@
       <workItem from="1562309796372" duration="20657000" />
       <workItem from="1562335652167" duration="1587000" />
       <workItem from="1562376767288" duration="1955000" />
-      <workItem from="1562485822959" duration="823000" />
+      <workItem from="1562485822959" duration="1262000" />
     </task>
+    <task id="LOCAL-00001" summary="web网盘主界面">
+      <created>1562486794594</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1562486794594</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122968000" />
+    <option name="totallyTimeSpent" value="123407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19198312" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19198312" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -199,7 +214,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32912722" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -209,6 +224,14 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="web网盘主界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="web网盘主界面" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CSS/material-design-iconic-font.min.css" />
@@ -246,7 +269,7 @@
     <entry file="file://$PROJECT_DIR$/../NetDisk/CSS/home.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8300">
-          <caret line="415" column="29" selection-start-line="415" selection-start-column="29" selection-end-line="415" selection-end-column="29" />
+          <caret line="419" column="29" selection-start-line="419" selection-start-column="29" selection-end-line="419" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -262,8 +285,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../NetDisk/JS/uploadfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="89" selection-start-line="24" selection-start-column="89" selection-end-line="24" selection-end-column="89" />
+        <state relative-caret-position="460">
+          <caret line="23" column="89" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
         </state>
       </provider>
     </entry>
