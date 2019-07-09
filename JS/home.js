@@ -96,17 +96,23 @@ function rightClickMenu() {
     $('.contextmenu-able').contextmenu(function (e) {
         // 阻止默认的右键菜单出现
         e.preventDefault();
+
         // 显示自定义菜单
         let menu = $('.context-menu');
         menu.removeClass('display-none');
+
         // 定位
         menu.css({
             'top': e.pageY,
             'left': e.pageX,
         });
+
         // 右键勾选复选框
         $(this).find('input[type="checkbox"]').prop('checked', true);
         $(this).addClass('checkbox-checked');
+
+        // 是否显示功能区
+        showOrHideFunctionWrapper();
     });
 
     // 任意单击事件都会隐藏右键菜单
@@ -162,55 +168,78 @@ function addUploadItem() {
 
 // 根据当前路径获取文件列表
 function getFilesByDir(curDir) {
-    // $.ajax({
-    //     url: '',  // 添加url后删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-    //     data: {'curDir': curDir},
-    //     type: 'POST',
-    //     dataType: 'json',
-    //     success: function (data) {
-    //         showFileListUseTable(data);
-    //     }
-    // });
-    var data = {
-        "files": {
-            "file1": {
-                "fileName": 'testFile1',
-                "fileSize": '123456',
-                "fileType": 'image/png',
-                "fileUploadDate": '2019-7-5',
-            },
-            "file2": {
-                "fileName": 'testFile2',
-                "fileSize": '230403',
-                "fileType": 'application/pdf',
-                "fileUploadDate": '2019-7-6',
-            },
-            "file3": {
-                "fileName": 'testFile3',
-                "fileSize": '1998',
-                "fileType": 'woxiaxiede',
-                "fileUploadDate": '2019-7-7',
-            },
-            "file4": {
-                "fileName": 'testDir',
-                "fileSize": '99999',
-                "fileType": 'dir',
-                "fileUploadDate": '2019-7-8',
-            },
-        }
-    };
-    // console.log(data);
-    showFileListUseTable(data);
+    if (curDir.charAt(curDir.length - 1) === '/') {
+
+        // 在按路径获得文件时,显示 返回\上传\新建文件夹 功能
+        $('.function-item1').removeClass('display-none');
+        $('.function-item2').removeClass('display-none');
+
+        clearTable();
+
+        // $.ajax({
+        //     url: '',  // 添加url后删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        //     data: {'curDir': curDir},
+        //     type: 'POST',
+        //     dataType: 'json',
+        //     success: function (data) {
+        //         data = JSON.parse(data);
+        //         showFileListUseTable(data);
+        //     }
+        // });
+        var data = {
+            "files": {
+                "file1": {
+                    "fileName": 'testFile1',
+                    "fileSize": '123456',
+                    "fileType": 'image/png',
+                    "fileDir": '/lihui/',
+                    "fileUploadDate": '2019-7-5',
+                },
+                "file2": {
+                    "fileName": 'testFile2',
+                    "fileSize": '230403',
+                    "fileType": 'application/pdf',
+                    "fileDir": '/lihui/',
+                    "fileUploadDate": '2019-7-6',
+                },
+                "file3": {
+                    "fileName": 'testFile3',
+                    "fileSize": '1998',
+                    "fileType": 'woxiaxiede',
+                    "fileDir": '/lihui/',
+                    "fileUploadDate": '2019-7-7',
+                },
+                "file4": {
+                    "fileName": 'testDir',
+                    "fileSize": '99999',
+                    "fileType": 'dir',
+                    "fileDir": '/lihui/',
+                    "fileUploadDate": '2019-7-8',
+                },
+            }
+        };
+        // console.log(data);
+        showFileListUseTable(data);
+    } else {
+        return '路径错误';
+    }
 }
 
 // 根据类型获取文件列表
 function getFilesByType(filetype) {
+    // 在按类型获得文件时,不显示 返回\上传\新建文件夹 功能
+    $('.function-item1').addClass('display-none');
+    $('.function-item2').addClass('display-none');
+
+    clearTable();
+
     $.ajax({
         url: '',  // 添加url后删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         data: {'fileType': filetype},
         type: 'POST',
         dataType: 'json',
         success: function (data) {
+            data = JSON.parse(data);
             showFileListUseTable(data);
         }
     });
@@ -222,18 +251,24 @@ function showFileListUseTable(data) {
         if (data.files.hasOwnProperty(key)) {
             // console.log(key);  // file1
             let fileName = data.files[key]['fileName'];
-            let fileSize = data.files[key]['fileSize'];  // 文件夹是否设计大小
+            let fileSize = data.files[key]['fileSize'];  // 文件夹不设计大小
+            if (fileSize === '') fileSize = '----';
             let fileType = data.files[key]['fileType'];
+            let fileDir = data.files[key]['fileDir'];  // 文件（夹）上层路径
             let fileUploadDate = data.files[key]['fileUploadDate'];
 
             let fileTable = $('#fileTable');
             if (fileType === 'dir') {
+                // 如果是文件夹
                 // td中额外添加一个可点击属性
-                fileTable.append('<tr class="contextmenu-able"><td class="col-1 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value="' + fileName + '"><span class="dir-click-able" onclick="alert(\'点我获得下一级目录\');"><i class="fa fa-folder p-l-5"></i>&nbsp;' + fileName + '</span></td><td class="col-2 border-bottom-solid">' + fileSize + '</td><td class="col-3 border-bottom-solid">' + fileUploadDate + '</td></tr>')
+                // checkbox的value设为 路径+文件名， 如果是文件夹则需要在末尾额外添加一个 '/'
+                // 当选中复选框时，可以读取复选框的value，然后与后台交互
+                fileTable.append('<tr class="contextmenu-able"><td class="col-0 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value="' + fileDir + fileName + '/"><span class="dir-click-able" onclick="alert(\'点我获得下一级目录\');"><i class="fa fa-folder p-l-5"></i>&nbsp;' + fileName + '</span></td><td class="col-1 border-bottom-solid">' + fileDir + '</td><td class="col-2 border-bottom-solid">' + fileSize + '</td><td class="col-3 border-bottom-solid">' + fileUploadDate + '</td></tr>')
             } else {
+                // 如果是文件
                 let fileIcon = getFontAwesomeIconFromMIME(fileType);  // 文件对应的icon图标
                 //console.log(fileIcon);
-                fileTable.append('<tr class="contextmenu-able"><td class="col-1 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value="' + fileName + '"><i class="fa ' + fileIcon + ' p-l-5"></i>&nbsp;' + fileName + '</td><td class="col-2 border-bottom-solid">' + fileSize + '</td><td class="col-3 border-bottom-solid">' + fileUploadDate + '</td></tr>')
+                fileTable.append('<tr class="contextmenu-able"><td class="col-0 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value="' + fileDir + fileName + '"><span><i class="fa ' + fileIcon + ' p-l-5"></i>&nbsp;' + fileName + '</span></td><td class="col-1 border-bottom-solid">' + fileDir + '</td><td class="col-2 border-bottom-solid">' + fileSize + '</td><td class="col-3 border-bottom-solid">' + fileUploadDate + '</td></tr>')
             }
         }
     }
@@ -244,6 +279,11 @@ function showFileListUseTable(data) {
 
     // 为当前页面上的所有复选框添加点击事件
     checkboxClick();
+}
+
+// 重新获取（刷新）时先清除表格已有内容
+function clearTable() {
+    $('#fileTable').empty();
 }
 
 /*----------------------------------------------------
@@ -297,32 +337,194 @@ function getFontAwesomeIconFromMIME(mimeType) {
 
 // 主复选框对文件（夹）复选框的控制：全选与全不选
 function mainCheckboxCtrl() {
-    var mainCheckbox = document.getElementById('main-checkbox');
-    var subCheckboxes = document.getElementsByClassName('sub-checkbox');
-    for (let i = 0; i < subCheckboxes.length; i++) {
-        subCheckboxes[i].checked = mainCheckbox.checked === true;
+    var mainCheckbox = $('#main-checkbox');
+    var subCheckboxes = $('.sub-checkbox');
+
+    // 文件(夹)复选框与主复选框保持一致
+    console.log(mainCheckbox.is(':checked'));
+    subCheckboxes.each(function () {
+        $(this).prop('checked', mainCheckbox.is(':checked'));
+    });
+
+    // 高亮的处理
+    if (mainCheckbox.is(':checked')) {
+        subCheckboxes.each(function () {
+            let tr = $(this).closest('.contextmenu-able');
+            tr.addClass('checkbox-checked');
+        });
+    } else {
+        subCheckboxes.each(function () {
+            let tr = $(this).closest('.contextmenu-able');
+            tr.removeClass('checkbox-checked');
+        });
     }
+
+    // 是否显示功能区
+    showOrHideFunctionWrapper();
 }
 
 // 复选框点击事件
 function checkboxClick() {
     $('.sub-checkbox').on('click', function () {
+        // 如果复选框选中，则该行高亮显示
+        let tr = $(this).closest('.contextmenu-able');
         // console.log($(this).is(':checked'));
         if ($(this).is(':checked')) {
-            $(this).prop('checked', true);
-        } else {
-            $(this).prop('checked', false);
-        }
-
-        let tr = $(this).closest('.contextmenu-able');
-        // console.log(tr.hasClass('checkbox-checked'));
-        if (tr.hasClass('checkbox-checked')) {
-            tr.removeClass('checkbox-checked');
-        } else {
             tr.addClass('checkbox-checked');
+        } else {
+            tr.removeClass('checkbox-checked');
+        }
+        // 是否显示功能区
+        showOrHideFunctionWrapper();
+    });
+}
+
+// 获得选中的复选框的值，以进行下一步的右键菜单操作
+// 复选框的值是 文件路径
+function getCheckedFileInfo() {
+    var fileList = [];
+    $('.sub-checkbox').each(function () {
+        if ($(this).is(':checked')) {
+            var dir = $(this).val();
+            // console.log(dir);
+            fileList.push(dir);
+        }
+    });
+    console.log(fileList);
+    return fileList;
+}
+
+// 至少有一个复选框被选中，则显示功能区
+// 所有可以对复选框进行操作的方法中应调用此方法
+// checkboxClick() mainCheckboxCtrl() rightClickMenu()
+function showOrHideFunctionWrapper() {
+    var counter = 0;  // 记录被选中的复选框的数量
+    $('.sub-checkbox').each(function () {
+        if ($(this).is(':checked')) {
+            counter++;
+        }
+    });
+    if (counter > 0) {
+        $('#function-item-wrapper').removeClass('display-none');
+    } else {
+        $('#function-item-wrapper').addClass('display-none');
+    }
+}
+
+/*----------------------------------------------------
+[ 右键菜单/功能区 函数 ]
+ */
+
+// 返回上一级目录
+// 在按类型获得文件的页面不显示此功能
+// 后台维护当前路径
+function goBackUpperDir() {
+    $.ajax({
+        url: 'url',
+        data: 'go back',
+        type: "POST",
+        success: function (res) {
+            console.log(res);
+            getFilesByDir(res);
+        },
+        fail: function (res) {
+            console.log(res);
         }
     });
 }
 
-// 获得选中的复选框的值，以进行下一步的操作
-// 复选框的值是 文件路径
+// 新建文件夹
+// 文件夹不设计大小
+function newFolder() {
+    var ft = $('#fileTable');
+    var fileName = prompt("请输入文件夹名称", "新建文件夹");
+    if (fileName != null && fileName.trim() !== '') {
+        if (fileName.indexOf('/') !== -1) {
+            alert('文件夹名称中不能包含/');
+        } else {
+            ft.append('<tr class="contextmenu-able"><td class="col-0 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value=""><span class="dir-click-able" onclick="alert(\'点我获得下一级目录\');"><i class="fa fa-folder p-l-5"></i>&nbsp;' + fileName + '</span></td><td class="col-1 border-bottom-solid">' + "" + '</td><td class="col-2 border-bottom-solid">' + "----" + '</td><td class="col-3 border-bottom-solid">' + "刚刚" + '</td></tr>');
+        }
+    } else {
+        alert('请正确输入文件夹名称!');
+    }
+
+    $.ajax({
+        url: '',
+        data: {"newFolder": fileName},
+        type: 'POST',
+        dataType: 'json',
+        success: function (res) {
+            var path = JSON.parse(res);
+            getFilesByDir(path);
+        }
+    })
+}
+
+// 下载
+function downloadFile() {
+    var downloadFileList = getCheckedFileInfo();
+    $.ajax({
+        url: '',
+        data: downloadFileList,
+        type: 'POST',
+        success: function (res) {
+            console.log(res);
+        },
+        fail: function (res) {
+            console.log(res);
+        }
+    })
+}
+
+// 删除
+function deleteFileOrFolder() {
+    var deleteFileList = getCheckedFileInfo();
+
+    // 页面上删除
+    $('.sub-checkbox').each(function () {
+        if ($(this).is(':checked')) {
+            let tr = $(this).closest('.contextmenu-able');
+            tr.remove();
+        }
+    });
+
+    // 服务器端删除
+    $.ajax({
+        url: '',
+        data: {"delete": deleteFileList},
+        type: 'POST',
+        dataType: 'json',
+        success: function (res) {
+            var path = JSON.parse(res);
+            getFilesByDir(path);
+        }
+    })
+}
+
+// 重命名
+function rename() {
+    var fileName = prompt('请输入新的文件(夹)名字', '重命名名称');
+
+    // 页面上改变
+    var checkedLength = getCheckedFileInfo().length;
+    if (checkedLength > 1) {
+        alert('每次只能选择一个文件(夹)重命名哦QwQ');
+        return;
+    }
+    if (fileName != null && fileName.trim() !== '') {
+        if (fileName.indexOf('/') !== -1) {
+            alert('文件(夹)名称中不能包含/');
+        } else {
+            $('.sub-checkbox').each(function () {
+                if ($(this).is(':checked')) {
+                    let span = $(this).siblings('span');
+                    let icon = span.find('i').prop('outerHTML');  // 获得图标节点,并转换为字符串
+                    console.log(icon);
+                    span.html(icon + ' ' + fileName);
+                }
+            })
+        }
+
+        // 服务器端改变名字
+    }
+}

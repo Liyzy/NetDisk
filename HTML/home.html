@@ -95,12 +95,12 @@
         <div class="right-part-wrapper">
             <div class="function-wrapper">
                 <div class="function-item1">
-                    <span onclick="alert('返回上一级目录')"><i class="fa fa-arrow-left p-l-10"></i>&nbsp;返回</span>
+                    <span onclick="goBackUpperDir()"><i class="fa fa-arrow-left p-l-10"></i>&nbsp;返回</span>
                 </div>
                 <div class="function-item2">
                     <span class="border-right-solid p-r-10" id="uploadControl" onclick="controlUploadChoices()"
                           tabindex="-1"><i class="fa fa-cloud-upload p-l-10"></i>&nbsp;上传</span>
-                    <span onclick="alert('点击了新建')"><i class="fa fa-plus p-l-10"></i>&nbsp;新建文件夹</span>
+                    <span onclick="newFolder()"><i class="fa fa-plus p-l-10"></i>&nbsp;新建文件夹</span>
                 </div>
                 <div class="type-choose-wrapper display-none" id="typeChooseDiv">
                     <div class="border-bottom-solid" id="uploadFileChoice">
@@ -112,10 +112,10 @@
                         <span style="position: absolute; top: 47px; left: 3px;">选择文件夹</span>
                     </div>
                 </div>
-                <div class="function-item3">
-                    <span class="border-right-solid p-r-10" onclick="alert('删除文件夹或文件')"><i
+                <div class="function-item3 display-none" id="function-item-wrapper">
+                    <span class="border-right-solid p-r-10" onclick="deleteFileOrFolder()"><i
                             class="fa fa-trash p-l-10"></i>&nbsp;删除</span>
-                    <span class="border-right-solid p-r-10" onclick="alert('下载')"><i
+                    <span class="border-right-solid p-r-10" onclick="downloadFile()"><i
                             class="fa fa-cloud-download p-l-10"></i>&nbsp;下载</span>
                     <span class="border-right-solid p-r-10" onclick="alert('移动')"><i
                             class="fa fa-arrows-alt p-l-10"></i>&nbsp;移动</span>
@@ -128,11 +128,14 @@
             </div>
             <div class="content-wrapper">
                 <table class="file-table m-l-15">
-                    <thead style="width: 40px;">
+                    <thead style="height: 40px;">
                     <tr>
-                        <th class="col-1 border-bottom-dashed">
+                        <th class="col-0 border-bottom-dashed">
                             <input class="hover-pointer" type="checkbox" id="main-checkbox"
                                    onclick="mainCheckboxCtrl()">&nbsp;文件名
+                        </th>
+                        <th class="col-1 border-bottom-dashed">
+                            当前路径
                         </th>
                         <th class="col-2 border-bottom-dashed">文件大小</th>
                         <th class="col-3 border-bottom-dashed">上传日期</th>
@@ -141,19 +144,21 @@
                     <tbody id="fileTable">
 
                     <tr class="contextmenu-able">
-                        <td class="col-1 border-bottom-solid">
-                            <input class="hover-pointer sub-checkbox" type="checkbox" value="这是一个文件夹">
+                        <td class="col-0 border-bottom-solid">
+                            <input class="hover-pointer sub-checkbox" type="checkbox" value="/A/这是一个文件夹">
                             <span class="dir-click-able" onclick="alert('点我获得下一层目录');">
                             <i class="fa fa-folder p-l-5"></i>&nbsp;这是一个文件夹</span>
                         </td>
-                        <td class="col-2 border-bottom-solid">2.5G</td>
+                        <td class="col-1 border-bottom-solid">/lihui/</td>
+                        <td class="col-2 border-bottom-solid">----</td>
                         <td class="col-3 border-bottom-solid">2019-07-01</td>
                     </tr>
                     <tr class="contextmenu-able">
-                        <td class="col-1 border-bottom-solid">
-                            <input class="hover-pointer sub-checkbox" type="checkbox" value="1111">
-                            <i class="fa fa-file-pdf-o p-l-5"></i>&nbsp;1111
+                        <td class="col-0 border-bottom-solid">
+                            <input class="hover-pointer sub-checkbox" type="checkbox" value="/A/B/1111">
+                            <span><i class="fa fa-file-pdf-o p-l-5"></i>&nbsp;1111</span>
                         </td>
+                        <td class="col-1 border-bottom-solid">/lihui/</td>
                         <td class="col-2 border-bottom-solid">2.5G</td>
                         <td class="col-3 border-bottom-solid">2019-07-01</td>
                     </tr>
@@ -329,22 +334,22 @@
     <!-- 右键菜单 -->
     <div class="context-menu display-none" id="context-menu-1">
         <ul>
-            <li data-action="download"><a href="#" onclick="return false;">
+            <li data-action="download"><a href="javascript:void(0);" onclick="downloadFile()">
                 <i class="fa fa-cloud-download p-r-25 p-l-15" style="width: 20px; height: 20px;"></i>
                 <span class="p-r-15">下载</span></a></li>
-            <li data-action="copy"><a href="#" onclick="return false;">
+            <li data-action="copy"><a href="javascript:void(0);" onclick="return false;">
                 <i class="fa fa-copy p-r-25 p-l-15" style="width: 20px; height: 20px;"></i>
                 <span class="p-r-15">复制</span></a></li>
-            <li data-action="delete"><a href="#" onclick="return false;">
+            <li data-action="delete"><a href="javascript:void(0);" onclick="deleteFileOrFolder()">
                 <i class="fa fa-trash p-r-25 p-l-15" style="width: 20px; height: 20px;"></i>
                 <span class="p-r-15">删除</span></a></li>
-            <li data-action="move"><a href="#" onclick="return false;">
+            <li data-action="move"><a href="javascript:void(0);" onclick="return false;">
                 <i class="fa fa-arrows-alt p-r-25 p-l-15" style="width: 20px; height: 20px;"></i>
                 <span class="p-r-15">移动到</span></a></li>
-            <li data-action="rename"><a href="#" onclick="return false;">
+            <li data-action="rename"><a href="javascript:void(0);" onclick="rename()">
                 <i class="fa fa-edit p-r-25 p-l-15" style="width: 20px; height: 20px;"></i>
                 <span class="p-r-15">重命名</span></a></li>
-            <li data-action="refresh"><a href="#" onclick="return false;">
+            <li data-action="refresh"><a href="javascript:void(0);" onclick="return false;">
                 <i class="fa fa-refresh p-r-25 p-l-15" style="width: 20px; height: 20px;"></i>
                 <span class="p-r-15">刷新</span></a></li>
         </ul>

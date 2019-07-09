@@ -22,7 +22,7 @@ a {
     font-family: 'Microsoft Yahei';
     line-height: 1.7;
     color: #000000;
-    margin: 0px;
+    margin: 0;
     transition: all 0.25s;
     -webkit-transition: all 0.25s;
     -o-transition: all 0.25s;
@@ -157,7 +157,6 @@ a:hover {
     left: 370px;
     top: 10px;
     width: 360px;
-    visibility: hidden;
 }
 
 .type-choose-wrapper {
@@ -228,7 +227,7 @@ a:hover {
 
 .file-table tbody {
     display: block;
-    height: 780px;
+    max-height: 780px;
     width: 100%;
     overflow-y: auto;
 }
@@ -237,9 +236,14 @@ a:hover {
     background-color: #0ab4ff;
 }
 
-.col-1 {
-    width: 1300px;
+.col-0 {
+    width: 900px;
     text-align: left;
+}
+
+.col-1 {
+    width: 400px;
+    text-align: center;
 }
 
 .col-2 {
