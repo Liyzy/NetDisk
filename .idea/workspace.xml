@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a95eb99-3b8e-466a-8749-911c1cf3d50c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HTML/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JS/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/JS/home.js" afterDir="false" />
     </list>
@@ -22,15 +20,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HTML/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="149" column="82" lean-forward="true" selection-start-line="149" selection-start-column="82" selection-end-line="149" selection-end-column="82" />
+            <state relative-caret-position="315">
+              <caret line="148" column="81" selection-start-line="148" selection-start-column="81" selection-end-line="148" selection-end-column="81" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#span#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -50,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSS/home.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+            <state relative-caret-position="195">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -59,28 +56,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JS/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
-              <caret line="521" column="38" lean-forward="true" selection-start-line="521" selection-start-column="38" selection-end-line="521" selection-end-column="38" />
+            <state relative-caret-position="725">
+              <caret line="535" column="34" lean-forward="true" selection-start-line="535" selection-start-column="34" selection-end-line="535" selection-end-column="34" />
               <folding>
-                <element signature="n#!!block;n#encrypt#0" />
-                <element signature="n#!!block;n#decrypt#0" />
-                <element signature="n#!!block;n#uploadFile#0" />
-                <element signature="n#!!block;n#rightClickMenu#0" />
-                <element signature="n#!!block;n#minimizeDiv#0" />
-                <element signature="n#!!block;n#maximizeDiv#0" />
-                <element signature="n#!!block;n#closeDiv#0" />
-                <element signature="n#!!block;n#addUploadItem#0" />
-                <element signature="n#!!block;n#getFilesByDir#0" />
-                <element signature="n#!!block;n#showFileListUseTable#0" />
+                <element signature="e#587#911#0" />
+                <element signature="e#935#1213#0" />
+                <element signature="e#1305#2989#0" />
+                <element signature="e#3085#3743#0" />
+                <element signature="e#3849#4073#0" />
+                <element signature="e#4106#4331#0" />
+                <element signature="e#4361#4439#0" />
+                <element signature="e#4478#5078#0" />
+                <element signature="e#5202#7069#0" />
+                <element signature="e#7119#7593#0" />
                 <element signature="e#230#236#1" expanded="true" />
                 <element signature="e#165#171#1" expanded="true" />
-                <element signature="n#!!block;n#clearTable#0" />
-                <element signature="n#!!block;n#getFontAwesomeIconFromMIME#0" />
-                <element signature="n#!!block;n#mainCheckboxCtrl#0" />
-                <element signature="n#!!block;n#checkboxClick#0" />
-                <element signature="n#!!block;n#getCheckedFileInfo#0" />
-                <element signature="n#!!block;n#showOrHideFunctionWrapper#0" />
-                <element signature="e#229#235#1" expanded="true" />
+                <element signature="e#9760#9792#0" />
+                <element signature="e#9915#11494#0" />
+                <element signature="e#11621#12329#0" />
+                <element signature="e#12367#12771#0" />
+                <element signature="e#12846#13120#0" />
+                <element signature="e#13262#13593#0" />
+                <element signature="e#13741#14010#0" />
+                <element signature="e#14054#15045#0" />
+                <element signature="e#15077#15366#0" />
+                <element signature="e#15404#15909#0" />
+                <element signature="e#15936#16699#0" />
               </folding>
             </state>
           </provider>
@@ -89,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JS/uploadfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+            <state relative-caret-position="479">
+              <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -138,6 +139,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,7 +156,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -207,7 +208,8 @@
       <workItem from="1562485822959" duration="1689000" />
       <workItem from="1562544775827" duration="10247000" />
       <workItem from="1562570360002" duration="5088000" />
-      <workItem from="1562632245655" duration="8547000" />
+      <workItem from="1562632245655" duration="8890000" />
+      <workItem from="1562718332322" duration="4768000" />
     </task>
     <task id="LOCAL-00001" summary="web网盘主界面">
       <created>1562486794594</created>
@@ -223,11 +225,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562487124801</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="复选框相关和部分右键菜单函数">
+      <created>1562641640381</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1562641640381</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147716000" />
+    <option name="totallyTimeSpent" value="152827000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -247,6 +256,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32912722" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32912722" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -260,7 +270,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="web网盘主界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="web网盘主界面" />
+    <MESSAGE value="复选框相关和部分右键菜单函数" />
+    <option name="LAST_COMMIT_MESSAGE" value="复选框相关和部分右键菜单函数" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -269,57 +280,60 @@
     <entry file="file://$PROJECT_DIR$/JS/contextmenu.js" />
     <entry file="file://$PROJECT_DIR$/JS/uploadfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        <state relative-caret-position="479">
+          <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CSS/home.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+        <state relative-caret-position="195">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JS/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="521" column="38" lean-forward="true" selection-start-line="521" selection-start-column="38" selection-end-line="521" selection-end-column="38" />
+        <state relative-caret-position="725">
+          <caret line="535" column="34" lean-forward="true" selection-start-line="535" selection-start-column="34" selection-end-line="535" selection-end-column="34" />
           <folding>
-            <element signature="n#!!block;n#encrypt#0" />
-            <element signature="n#!!block;n#decrypt#0" />
-            <element signature="n#!!block;n#uploadFile#0" />
-            <element signature="n#!!block;n#rightClickMenu#0" />
-            <element signature="n#!!block;n#minimizeDiv#0" />
-            <element signature="n#!!block;n#maximizeDiv#0" />
-            <element signature="n#!!block;n#closeDiv#0" />
-            <element signature="n#!!block;n#addUploadItem#0" />
-            <element signature="n#!!block;n#getFilesByDir#0" />
-            <element signature="n#!!block;n#showFileListUseTable#0" />
+            <element signature="e#587#911#0" />
+            <element signature="e#935#1213#0" />
+            <element signature="e#1305#2989#0" />
+            <element signature="e#3085#3743#0" />
+            <element signature="e#3849#4073#0" />
+            <element signature="e#4106#4331#0" />
+            <element signature="e#4361#4439#0" />
+            <element signature="e#4478#5078#0" />
+            <element signature="e#5202#7069#0" />
+            <element signature="e#7119#7593#0" />
             <element signature="e#230#236#1" expanded="true" />
             <element signature="e#165#171#1" expanded="true" />
-            <element signature="n#!!block;n#clearTable#0" />
-            <element signature="n#!!block;n#getFontAwesomeIconFromMIME#0" />
-            <element signature="n#!!block;n#mainCheckboxCtrl#0" />
-            <element signature="n#!!block;n#checkboxClick#0" />
-            <element signature="n#!!block;n#getCheckedFileInfo#0" />
-            <element signature="n#!!block;n#showOrHideFunctionWrapper#0" />
-            <element signature="e#229#235#1" expanded="true" />
+            <element signature="e#9760#9792#0" />
+            <element signature="e#9915#11494#0" />
+            <element signature="e#11621#12329#0" />
+            <element signature="e#12367#12771#0" />
+            <element signature="e#12846#13120#0" />
+            <element signature="e#13262#13593#0" />
+            <element signature="e#13741#14010#0" />
+            <element signature="e#14054#15045#0" />
+            <element signature="e#15077#15366#0" />
+            <element signature="e#15404#15909#0" />
+            <element signature="e#15936#16699#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HTML/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="149" column="82" lean-forward="true" selection-start-line="149" selection-start-column="82" selection-end-line="149" selection-end-column="82" />
+        <state relative-caret-position="315">
+          <caret line="148" column="81" selection-start-line="148" selection-start-column="81" selection-end-line="148" selection-end-column="81" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#span#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />

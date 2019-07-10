@@ -263,7 +263,7 @@ function showFileListUseTable(data) {
                 // td中额外添加一个可点击属性
                 // checkbox的value设为 路径+文件名， 如果是文件夹则需要在末尾额外添加一个 '/'
                 // 当选中复选框时，可以读取复选框的value，然后与后台交互
-                fileTable.append('<tr class="contextmenu-able"><td class="col-0 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value="' + fileDir + fileName + '/"><span class="dir-click-able" onclick="alert(\'点我获得下一级目录\');"><i class="fa fa-folder p-l-5"></i>&nbsp;' + fileName + '</span></td><td class="col-1 border-bottom-solid">' + fileDir + '</td><td class="col-2 border-bottom-solid">' + fileSize + '</td><td class="col-3 border-bottom-solid">' + fileUploadDate + '</td></tr>')
+                fileTable.append('<tr class="contextmenu-able"><td class="col-0 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value="' + fileDir + fileName + '/"><span class="dir-click-able" onclick="getNextDir(this)"><i class="fa fa-folder p-l-5"></i>&nbsp;' + fileName + '</span></td><td class="col-1 border-bottom-solid">' + fileDir + '</td><td class="col-2 border-bottom-solid">' + fileSize + '</td><td class="col-3 border-bottom-solid">' + fileUploadDate + '</td></tr>')
             } else {
                 // 如果是文件
                 let fileIcon = getFontAwesomeIconFromMIME(fileType);  // 文件对应的icon图标
@@ -341,7 +341,7 @@ function mainCheckboxCtrl() {
     var subCheckboxes = $('.sub-checkbox');
 
     // 文件(夹)复选框与主复选框保持一致
-    console.log(mainCheckbox.is(':checked'));
+    // console.log(mainCheckbox.is(':checked'));
     subCheckboxes.each(function () {
         $(this).prop('checked', mainCheckbox.is(':checked'));
     });
@@ -390,7 +390,7 @@ function getCheckedFileInfo() {
             fileList.push(dir);
         }
     });
-    console.log(fileList);
+    // console.log(fileList);
     return fileList;
 }
 
@@ -442,22 +442,22 @@ function newFolder() {
         if (fileName.indexOf('/') !== -1) {
             alert('文件夹名称中不能包含/');
         } else {
-            ft.append('<tr class="contextmenu-able"><td class="col-0 border-bottom-solid"><input class="hover-pointer sub-checkbox" type="checkbox" value=""><span class="dir-click-able" onclick="alert(\'点我获得下一级目录\');"><i class="fa fa-folder p-l-5"></i>&nbsp;' + fileName + '</span></td><td class="col-1 border-bottom-solid">' + "" + '</td><td class="col-2 border-bottom-solid">' + "----" + '</td><td class="col-3 border-bottom-solid">' + "刚刚" + '</td></tr>');
+            $.ajax({
+                url: '',
+                data: {"newFolder": fileName},
+                type: 'POST',
+                dataType: 'json',
+                success: function (res) {
+                    let path = JSON.parse(res);
+                    getFilesByDir(path);
+                }
+            })
         }
     } else {
         alert('请正确输入文件夹名称!');
     }
 
-    $.ajax({
-        url: '',
-        data: {"newFolder": fileName},
-        type: 'POST',
-        dataType: 'json',
-        success: function (res) {
-            var path = JSON.parse(res);
-            getFilesByDir(path);
-        }
-    })
+
 }
 
 // 下载
@@ -480,14 +480,6 @@ function downloadFile() {
 function deleteFileOrFolder() {
     var deleteFileList = getCheckedFileInfo();
 
-    // 页面上删除
-    $('.sub-checkbox').each(function () {
-        if ($(this).is(':checked')) {
-            let tr = $(this).closest('.contextmenu-able');
-            tr.remove();
-        }
-    });
-
     // 服务器端删除
     $.ajax({
         url: '',
@@ -495,6 +487,7 @@ function deleteFileOrFolder() {
         type: 'POST',
         dataType: 'json',
         success: function (res) {
+            // 删除成功后刷新页面
             var path = JSON.parse(res);
             getFilesByDir(path);
         }
@@ -503,28 +496,41 @@ function deleteFileOrFolder() {
 
 // 重命名
 function rename() {
-    var fileName = prompt('请输入新的文件(夹)名字', '重命名名称');
-
-    // 页面上改变
-    var checkedLength = getCheckedFileInfo().length;
-    if (checkedLength > 1) {
+    var renameFile = getCheckedFileInfo();
+    if (renameFile.length > 1) {
         alert('每次只能选择一个文件(夹)重命名哦QwQ');
         return;
     }
-    if (fileName != null && fileName.trim() !== '') {
-        if (fileName.indexOf('/') !== -1) {
+    var newFileName = prompt('请输入新的文件(夹)名字', '重命名名称');
+    if (newFileName != null && newFileName.trim() !== '') {
+        if (newFileName.indexOf('/') !== -1) {
             alert('文件(夹)名称中不能包含/');
         } else {
             $('.sub-checkbox').each(function () {
                 if ($(this).is(':checked')) {
-                    let span = $(this).siblings('span');
-                    let icon = span.find('i').prop('outerHTML');  // 获得图标节点,并转换为字符串
-                    console.log(icon);
-                    span.html(icon + ' ' + fileName);
+                    var file = $(this).val();
+                    console.log(newFileName);
+                    $.ajax({
+                        url: '',
+                        data: {"newFileName": newFileName, "file": file},
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            var path = JSON.parse(res);
+                            getFilesByDir(path);
+                        }
+                    })
                 }
             })
         }
-
-        // 服务器端改变名字
     }
+}
+
+/*----------------------------------------------------
+[ 点击文件夹到下一层目录 ]
+ */
+function getNextDir(folder) {
+    var checkbox = folder.previousSibling;
+    // console.log(checkbox.value);
+    getFilesByDir(checkbox.value);
 }
